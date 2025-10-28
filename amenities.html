@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <a href="index.html"><h2>Grand Hotel</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li class="active"><a href="amenities.html">Amenities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='booking.html'">
+                    <i class="fas fa-calendar-check"></i>Book Now
+                </button>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <!-- Amenities Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover; margin-top: 0;">
+        <div class="hero-content">
+            <h1>Hotel Amenities</h1>
+            <p>Experience world-class facilities and services designed for your comfort</p>
+        </div>
+    </section>
+
+    <!-- Amenities Grid -->
+    <section class="amenities-page">
+        <h2>Our Facilities & Services</h2>
+        <div class="amenities-grid-main">
+            <a href="amenity-restaurant.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Restaurant">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Gourmet Restaurant</h3>
+                    <p>Experience fine dining with international cuisine prepared by our award-winning chefs</p>
+                    <span class="amenity-features">Breakfast • Lunch • Dinner • Room Service</span>
+                </div>
+            </a>
+
+            <a href="amenity-swimming-pool.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Swimming Pool">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-swimming-pool"></i>
+                    <h3>Infinity Pool</h3>
+                    <p>Relax in our stunning rooftop infinity pool with panoramic city views</p>
+                    <span class="amenity-features">Heated • Pool Bar • Sun Deck • Towel Service</span>
+                </div>
+            </a>
+
+            <a href="amenity-spa.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="spa.png" alt="Spa">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-spa"></i>
+                    <h3>Luxury Spa</h3>
+                    <p>Rejuvenate your mind and body with our premium spa treatments</p>
+                    <span class="amenity-features">Massage • Facials • Sauna • Steam Room</span>
+                </div>
+            </a>
+
+            <a href="amenity-gym.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gym">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Fitness Center</h3>
+                    <p>Stay fit with state-of-the-art equipment and personal training services</p>
+                    <span class="amenity-features">24/7 Access • Cardio • Weights • Yoga</span>
+                </div>
+            </a>
+
+            <a href="amenity-business.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Business Center">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Business Center</h3>
+                    <p>Fully equipped business facilities for productive work sessions</p>
+                    <span class="amenity-features">Meeting Rooms • Printing • High-speed Internet</span>
+                </div>
+            </a>
+
+            <a href="amenity-events.html" class="amenity-card-large">
+                <div class="amenity-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Events">
+                </div>
+                <div class="amenity-content">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>Event Spaces</h3>
+                    <p>Elegant venues for weddings, conferences, and special occasions</p>
+                    <span class="amenity-features">Weddings • Conferences • Parties • Catering</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="services-section">
+        <h2>Additional Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-concierge-bell"></i>
+                <h4>24/7 Concierge</h4>
+                <p>Personalized assistance for all your needs</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-shuttle-van"></i>
+                <h4>Airport Transfer</h4>
+                <p>Complimentary airport pickup and drop-off</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-parking"></i>
+                <h4>Valet Parking</h4>
+                <p>Secure parking with valet service</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-wifi"></i>
+                <h4>Free Wi-Fi</h4>
+                <p>High-speed internet throughout the hotel</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-umbrella-beach"></i>
+                <h4>Beach Access</h4>
+                <p>Private beach area with loungers</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-child"></i>
+                <h4>Kids Club</h4>
+                <p>Supervised activities for children</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury and comfort in the heart of the city. Your perfect getaway awaits.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="rooms.html">Rooms & Suites</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 27 Education Road, Al Qarayen District</p>
+                <p><i class="fas fa-phone"></i> +971 56 817 9793</p>
+                <p><i class="fas fa-envelope"></i> info@grandhotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .amenities-page {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .amenities-grid-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .amenity-card-large {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .amenity-card-large:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .amenity-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .amenity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .amenity-card-large:hover .amenity-image img {
+            transform: scale(1.1);
+        }
+
+        .amenity-content {
+            padding: 2rem;
+        }
+
+        .amenity-content i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .amenity-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .amenity-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .amenity-features {
+            display: block;
+            color: var(--success);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .services-section {
+            background: var(--light);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .service-item {
+            background: white;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .amenities-grid-main {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</body>
+</html>

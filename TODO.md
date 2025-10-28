@@ -1,0 +1,11 @@
+- [x] Remove "Check Sickness" link from index.html
+- [x] Delete sickness-check.html file
+- [x] Remove allergy check code from script.js
+- [x] Expand translations object in script.js for all text
+- [x] Update updateLanguage function to translate all elements
+- [x] Remove language button from all HTML pages
+- [x] Remove check sickness button from all HTML pages
+- [x] Remove language toggle code from script.js
+- [x] Change hero "Book Now" button to scroll to featured rooms section
+- [x] Make booking form progressive: show next field after answering previous
+- [x] Make "Grand Hotel" text clickable to go to home page

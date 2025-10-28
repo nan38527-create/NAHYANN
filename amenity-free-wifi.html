@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Wi-Fi - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><h2>Grand Hotel</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <section class="amenity-page">
+        <h1>Free Wi-Fi</h1>
+        <div class="amenity-content">
+            <img src="free_wifi.png" alt="Free Wi-Fi">
+            <div class="amenity-text">
+                <p>Enjoy complimentary high-speed Wi-Fi throughout the hotel. Stay connected with family and friends, or get some work done while on the go. Our Wi-Fi is available in all public areas, rooms, and suites.</p>
+                <a href="index.html" class="cta-button">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Abdulla Bin Nasser School. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Stay</h2>
+            <form id="bookingForm">
+                <label for="roomType">Room Type:</label>
+                <input type="text" id="roomType" name="roomType" required>
+
+                <label for="checkIn">Check-in Date:</label>
+                <input type="date" id="checkIn" name="checkIn" required>
+
+                <label for="checkOut">Check-out Date:</label>
+                <input type="date" id="checkOut" name="checkOut" required>
+
+                <label for="guestName">Guest Name:</label>
+                <input type="text" id="guestName" name="guestName" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

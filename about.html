@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-hotel"></i>
+            <a href="index.html"><h2>Grand Hotel</h2></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="rooms.html" class="nav-link">Rooms & Suites</a></li>
+            <li><a href="amenities.html" class="nav-link">Amenities</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="window.location.href='booking.html'">
+                <i class="fas fa-calendar-check"></i>Book Now
+            </button>
+        </div>
+        <div class="hamburger">☰</div>
+    </nav>
+</header>
+
+<script>
+// Add this script to fix the active navigation state
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current page URL
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Remove active class from all nav items
+    document.querySelectorAll('.nav-links li').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to current page
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.parentElement.classList.add('active');
+        }
+    });
+    
+    // Mobile menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            });
+        });
+    }
+    
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+});
+</script>
+
+    <!-- About Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;">
+        <div class="hero-content">
+            <h1>Our Story</h1>
+            <p>Three decades of excellence in hospitality and luxury accommodation</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-page">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Welcome to Grand Hotel</h2>
+                <p>Established in 1995, Grand Hotel has been a cornerstone of luxury hospitality in Dubai. What started as a modest boutique hotel has evolved into one of the city's most prestigious accommodations, blending traditional Arabian hospitality with modern elegance.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>30+ Years</h3>
+                        <p>Of Excellence</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>50,000+</h3>
+                        <p>Happy Guests</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>15+ Awards</h3>
+                        <p>Hospitality Excellence</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3>4.9/5</h3>
+                        <p>Guest Rating</p>
+                    </div>
+                </div>
+
+                <h2>Our Location</h2>
+                <p>Strategically located in the heart of Dubai's business district, Grand Hotel offers unparalleled access to the city's most iconic landmarks. Just minutes away from Dubai Mall, Burj Khalifa, and the Dubai Metro, our prime location makes it the perfect base for both business travelers and tourists exploring the vibrant city.</p>
+
+                <h2>Our Facilities</h2>
+                <p>Experience world-class amenities at Grand Hotel. Our 200 elegantly appointed rooms and suites feature state-of-the-art technology, luxurious bedding, and stunning city views. Indulge in our award-winning restaurant serving international cuisine, relax at our rooftop pool with panoramic views, or rejuvenate at our full-service spa. Business travelers will appreciate our conference facilities and high-speed internet throughout the property.</p>
+
+                <h2>Our Mission</h2>
+                <p>To provide exceptional hospitality experiences that create lasting memories for our guests, while maintaining the highest standards of service, comfort, and sustainability.</p>
+
+                <div class="mission-values">
+                    <div class="value-item">
+                        <i class="fas fa-heart"></i>
+                        <h4>Exceptional Service</h4>
+                        <p>Going above and beyond for every guest</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-leaf"></i>
+                        <h4>Sustainability</h4>
+                        <p>Committed to eco-friendly practices</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-gem"></i>
+                        <h4>Luxury</h4>
+                        <p>Uncompromising quality and comfort</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Community</h4>
+                        <p>Supporting local businesses and culture</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hotel Lobby">
+                <div class="image-caption">Our elegant lobby welcomes guests with Arabian hospitality</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Meet Our Leadership</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="General Manager">
+                <h3>Ahmed Al Maktoum</h3>
+                <p>General Manager</p>
+                <div class="member-bio">
+                    With over 20 years in luxury hospitality, Ahmed ensures every guest experiences the true meaning of Arabian hospitality.
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Operations">
+                <h3>Sarah Johnson</h3>
+                <p>Head of Operations</p>
+                <div class="member-bio">
+                    Sarah brings international experience from leading hotels across Europe and Asia, ensuring seamless operations.
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Executive Chef">
+                <h3>Marco Bellini</h3>
+                <p>Executive Chef</p>
+                <div class="member-bio">
+                    Award-winning chef Marco creates culinary masterpieces that blend local flavors with international cuisine.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <h2>Awards & Recognition</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Best Luxury Hotel 2023</h3>
+                <p>World Travel Awards</p>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-award"></i>
+                <h3>5-Star Excellence</h3>
+                <p>Forbes Travel Guide</p>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-star"></i>
+                <h3>Green Hotel Award</h3>
+                <p>Sustainable Tourism</p>
+            </div>
+            <div class="award-card">
+                <i class="fas fa-medal"></i>
+                <h3>Service Excellence</h3>
+                <p>Hospitality Awards</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury and comfort in the heart of the city. Your perfect getaway awaits.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="rooms.html">Rooms & Suites</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 27 Education Road, Al Qarayen District</p>
+                <p><i class="fas fa-phone"></i> +971 56 817 9793</p>
+                <p><i class="fas fa-envelope"></i> info@grandhotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .mission-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .team-section {
+            background: var(--light);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid var(--secondary);
+        }
+
+        .team-member h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .awards-section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .award-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .award-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .booking-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .booking-progress:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .progress-step.active .step-number {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .room-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .room-option {
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .room-option:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .room-option.selected {
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+
+        .room-option.selected::before {
+            content: '✓ Selected';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--success);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .room-option img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .room-features span {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .room-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--success);
+            text-align: right;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .amenity-checkbox {
+            cursor: pointer;
+        }
+
+        .amenity-checkbox input {
+            display: none;
+        }
+
+        .amenity-card {
+            background: white;
+            padding: 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .amenity-checkbox input:checked + .amenity-card {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .amenity-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .amenity-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-price {
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .price-summary {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .price-breakdown {
+            margin-top: 1rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-item.total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--success);
+            border-bottom: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--success);
+        }
+
+        .date-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            outline: none;
+        }
+
+        .guest-label-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .guest-label-row label {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .add-btn, .remove-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .add-btn:hover, .remove-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .remove-btn {
+            background: var(--accent);
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .medical-notice {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .medical-btn {
+            background: var(--accent);
+            margin-top: 1rem;
+        }
+
+        .medical-btn:hover {
+            background: #c0392b;
+        }
+
+        .booking-summary {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-item.total {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--success);
+            border-bottom: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--success);
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .payment-option {
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            display: none;
+        }
+
+        .payment-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .payment-option input:checked + .payment-card {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .payment-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .terms-agreement {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .terms-agreement label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .step-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .room-options {
+                grid-template-columns: 1fr;
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .date-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .step-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .booking-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .progress-step {
+                flex: 1;
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <a href="index.html"><h2>Grand Hotel</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="amenities.html">Amenities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='booking.html'">
+                    <i class="fas fa-calendar-check"></i>Book Now
+                </button>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <!-- Booking Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover; margin-top: 0;">
+        <div class="hero-content">
+            <h1>Book Your Stay</h1>
+            <p>Experience luxury and comfort with our exclusive packages</p>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-progress">
+            <div class="progress-step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Room Selection</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">2</div>
+                <div class="step-label">Amenities</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">3</div>
+                <div class="step-label">Dates</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">4</div>
+                <div class="step-label">Guests</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">5</div>
+                <div class="step-label">Contact</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">6</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+
+        <form id="bookingForm">
+            <!-- Step 1: Room Selection -->
+            <div class="step active" data-step="1">
+                <h2>Select Your Room</h2>
+                <div class="room-options">
+                    <div class="room-option" data-room="Standard Room" data-price="150">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Standard Room">
+                        <div class="room-info">
+                            <h3>Standard Room</h3>
+                            <p>Comfortable room with queen bed, smart TV, and luxurious bathroom</p>
+                            <div class="room-features">
+                                <span><i class="fas fa-wifi"></i> Free Wi-Fi</span>
+                                <span><i class="fas fa-tv"></i> Smart TV</span>
+                                <span><i class="fas fa-snowflake"></i> AC</span>
+                            </div>
+                            <div class="room-price">AED 150/night</div>
+                        </div>
+                    </div>
+
+                    <div class="room-option" data-room="Deluxe Room" data-price="250">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Deluxe Room">
+                        <div class="room-info">
+                            <h3>Deluxe Room</h3>
+                            <p>Spacious room with king bed, city view, mini-fridge, and work desk</p>
+                            <div class="room-features">
+                                <span><i class="fas fa-city"></i> City View</span>
+                                <span><i class="fas fa-wine-bottle"></i> Mini Bar</span>
+                                <span><i class="fas fa-desktop"></i> Work Desk</span>
+                            </div>
+                            <div class="room-price">AED 250/night</div>
+                        </div>
+                    </div>
+
+                    <div class="room-option" data-room="Suite" data-price="400">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Suite">
+                        <div class="room-info">
+                            <h3>Luxury Suite</h3>
+                            <p>Premium suite with separate living area, balcony, and premium amenities</p>
+                            <div class="room-features">
+                                <span><i class="fas fa-door-open"></i> Living Room</span>
+                                <span><i class="fas fa-umbrella-beach"></i> Balcony</span>
+                                <span><i class="fas fa-bath"></i> Jacuzzi</span>
+                            </div>
+                            <div class="room-price">AED 400/night</div>
+                        </div>
+                    </div>
+
+                    <div class="room-option" data-room="Family Room" data-price="300">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Family Room">
+                        <div class="room-info">
+                            <h3>Family Room</h3>
+                            <p>Large room with two queen beds, kitchenette, and play area for families</p>
+                            <div class="room-features">
+                                <span><i class="fas fa-users"></i> Family Size</span>
+                                <span><i class="fas fa-utensils"></i> Kitchenette</span>
+                                <span><i class="fas fa-gamepad"></i> Play Area</span>
+                            </div>
+                            <div class="room-price">AED 300/night</div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="roomType" name="roomType" required>
+                <input type="hidden" id="roomPriceValue" name="roomPrice" value="0">
+                
+                <div class="step-buttons">
+                    <button type="button" class="cta-button next-step" onclick="validateRoomSelection()">Continue to Amenities</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Amenities -->
+            <div class="step" data-step="2">
+                <h2>Select Amenities</h2>
+                <fieldset>
+                    <legend>Additional Services (Optional)</legend>
+                    <div class="amenities-grid">
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Free Wi-Fi" data-price="20">
+                            <div class="amenity-card">
+                                <i class="fas fa-wifi"></i>
+                                <h4>Free Wi-Fi</h4>
+                                <p>High-speed internet access</p>
+                                <span class="amenity-price">+AED 20/night</span>
+                            </div>
+                        </label>
+
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Swimming Pool" data-price="50">
+                            <div class="amenity-card">
+                                <i class="fas fa-swimming-pool"></i>
+                                <h4>Pool Access</h4>
+                                <p>Infinity pool with city views</p>
+                                <span class="amenity-price">+AED 50/night</span>
+                            </div>
+                        </label>
+
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Buffet" data-price="100">
+                            <div class="amenity-card">
+                                <i class="fas fa-utensils"></i>
+                                <h4>Breakfast Buffet</h4>
+                                <p>Daily breakfast included</p>
+                                <span class="amenity-price">+AED 100/night</span>
+                            </div>
+                        </label>
+
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Gym" data-price="30">
+                            <div class="amenity-card">
+                                <i class="fas fa-dumbbell"></i>
+                                <h4>Gym Access</h4>
+                                <p>24/7 fitness center</p>
+                                <span class="amenity-price">+AED 30/night</span>
+                            </div>
+                        </label>
+
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Spa" data-price="150">
+                            <div class="amenity-card">
+                                <i class="fas fa-spa"></i>
+                                <h4>Spa Package</h4>
+                                <p>One spa treatment per stay</p>
+                                <span class="amenity-price">+AED 150/night</span>
+                            </div>
+                        </label>
+
+                        <label class="amenity-checkbox">
+                            <input type="checkbox" name="amenities" value="Parking" data-price="40">
+                            <div class="amenity-card">
+                                <i class="fas fa-parking"></i>
+                                <h4>Valet Parking</h4>
+                                <p>Secure parking service</p>
+                                <span class="amenity-price">+AED 40/night</span>
+                            </div>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div id="totalPrice" class="price-summary">
+                    <h3>Price Summary</h3>
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span>Room:</span>
+                            <span id="roomPriceDisplay">AED 0</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Amenities:</span>
+                            <span id="amenitiesPrice">AED 0</span>
+                        </div>
+                        <div class="price-item total">
+                            <span>Total per night:</span>
+                            <span id="totalPerNight">AED 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-secondary prev-step">Back</button>
+                    <button type="button" class="cta-button next-step" onclick="validateAmenities()">Continue to Dates</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Dates & Pricing -->
+            <div class="step" data-step="3">
+                <h2>Select Dates</h2>
+                
+                <div class="date-selection">
+                    <div class="form-group">
+                        <label for="checkIn">Check-in Date *</label>
+                        <input type="date" id="checkIn" name="checkIn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkOut">Check-out Date *</label>
+                        <input type="date" id="checkOut" name="checkOut" required>
+                    </div>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-secondary prev-step">Back</button>
+                    <button type="button" class="cta-button next-step" onclick="validateDates()">Continue to Guests</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Guest Information -->
+            <div class="step" data-step="4">
+                <h2>Guest Information</h2>
+                
+                <div id="guestNamesContainer">
+                    <div class="guest-label-row">
+                        <label for="guestName1">Primary Guest Name *</label>
+                        <button type="button" id="addGuestBtn" class="add-btn" title="Add Guest">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="guestName1" name="guestName[]" placeholder="Enter primary guest name" required>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-secondary prev-step">Back</button>
+                    <button type="button" class="cta-button next-step" onclick="validateGuests()">Continue to Contact</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Contact Information -->
+            <div class="step" data-step="5">
+                <h2>Contact Information</h2>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+971 XX XXX XXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requirements or requests..."></textarea>
+                </div>
+
+                <div class="medical-notice">
+                    <p><i class="fas fa-heartbeat"></i> <strong>Medical & Dietary Requirements</strong></p>
+                    <p>If you have any medical conditions, allergies, or dietary restrictions, please let us know so we can make your stay more comfortable.</p>
+                    <a href="sickness.html" class="cta-button medical-btn">
+                        <i class="fas fa-stethoscope"></i> Report Medical Requirements
+                    </a>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-secondary prev-step">Back</button>
+                    <button type="button" class="cta-button next-step" onclick="validateContact()">Continue to Payment</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Payment & Confirmation -->
+            <div class="step" data-step="6">
+                <h2>Payment & Confirmation</h2>
+
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div class="summary-item">
+                        <span>Room Type:</span>
+                        <span id="summaryRoom">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Check-in:</span>
+                        <span id="summaryCheckIn">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Check-out:</span>
+                        <span id="summaryCheckOut">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Guests:</span>
+                        <span id="summaryGuests">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Nights:</span>
+                        <span id="summaryNights">-</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total Amount:</span>
+                        <span id="summaryTotal">AED 0</span>
+                    </div>
+                </div>
+
+                <fieldset>
+                    <legend>Payment Method</legend>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Credit Card" required>
+                            <div class="payment-card">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="PayPal">
+                            <div class="payment-card">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Cash on Arrival">
+                            <div class="payment-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Cash on Arrival</span>
+                            </div>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="terms-agreement">
+                    <label>
+                        <input type="checkbox" name="terms" required>
+                        I agree to the <a href="terms.html">Terms & Conditions</a> and <a href="privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <div class="step-buttons">
+                    <button type="button" class="btn-secondary prev-step">Back</button>
+                    <button type="submit" class="cta-button">
+                        <i class="fas fa-lock"></i> Confirm Booking
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury and comfort in the heart of the city. Your perfect getaway awaits.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="rooms.html">Rooms & Suites</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 27 Education Road, Al Qarayen District</p>
+                <p><i class="fas fa-phone"></i> +971 56 817 9793</p>
+                <p><i class="fas fa-envelope"></i> info@grandhotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Booking System JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBookingSystem();
+        });
+
+        function initializeBookingSystem() {
+            // Room selection
+            const roomOptions = document.querySelectorAll('.room-option');
+            
+            roomOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    roomOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Set the room type and price values
+                    const roomType = this.getAttribute('data-room');
+                    const roomPrice = this.getAttribute('data-price');
+                    
+                    document.getElementById('roomType').value = roomType;
+                    document.getElementById('roomPriceValue').value = roomPrice;
+                    
+                    // Update price calculation
+                    calculateTotalPrice();
+                });
+            });
+
+            // Amenity selection for price calculation
+            document.querySelectorAll('input[name="amenities"]').forEach(checkbox => {
+                checkbox.addEventListener('change', calculateTotalPrice);
+            });
+
+            // Step navigation
+            document.querySelectorAll('.next-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = document.querySelector('.step.active');
+                    const nextStep = currentStep.nextElementSibling;
+                    
+                    if (nextStep && nextStep.classList.contains('step')) {
+                        currentStep.classList.remove('active');
+                        nextStep.classList.add('active');
+                        updateProgress(parseInt(nextStep.getAttribute('data-step')));
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = document.querySelector('.step.active');
+                    const prevStep = currentStep.previousElementSibling;
+                    
+                    if (prevStep && prevStep.classList.contains('step')) {
+                        currentStep.classList.remove('active');
+                        prevStep.classList.add('active');
+                        updateProgress(parseInt(prevStep.getAttribute('data-step')));
+                    }
+                });
+            });
+
+            // Guest management
+            let guestCount = 1;
+            const addGuestBtn = document.getElementById('addGuestBtn');
+            const guestNamesContainer = document.getElementById('guestNamesContainer');
+
+            if (addGuestBtn && guestNamesContainer) {
+                addGuestBtn.addEventListener('click', function() {
+                    if (guestCount < 6) { // Limit to 6 guests
+                        guestCount++;
+                        addGuestField(guestCount);
+                    } else {
+                        alert('Maximum 6 guests allowed');
+                    }
+                });
+            }
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkIn').min = today;
+
+            // Update check-out min date when check-in changes
+            document.getElementById('checkIn').addEventListener('change', function() {
+                document.getElementById('checkOut').min = this.value;
+            });
+
+            // Form submission
+            document.getElementById('bookingForm').addEventListener('submit', handleBookingSubmission);
+        }
+
+        function addGuestField(guestNumber) {
+            const guestNamesContainer = document.getElementById('guestNamesContainer');
+            
+            const newLabelRow = document.createElement('div');
+            newLabelRow.className = 'guest-label-row';
+
+            const newLabel = document.createElement('label');
+            newLabel.setAttribute('for', `guestName${guestNumber}`);
+            newLabel.textContent = `Guest ${guestNumber} Name:`;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'remove-btn';
+            removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            removeBtn.addEventListener('click', function() {
+                const row = this.closest('.guest-label-row');
+                const input = row.nextElementSibling;
+                if (input && input.tagName === 'INPUT') {
+                    guestNamesContainer.removeChild(input);
+                }
+                guestNamesContainer.removeChild(row);
+                guestCount--;
+            });
+
+            newLabelRow.appendChild(newLabel);
+            newLabelRow.appendChild(removeBtn);
+
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.id = `guestName${guestNumber}`;
+            newInput.name = 'guestName[]';
+            newInput.required = true;
+            newInput.placeholder = `Enter guest ${guestNumber} name`;
+
+            guestNamesContainer.appendChild(newLabelRow);
+            guestNamesContainer.appendChild(newInput);
+        }
+
+        // Validation Functions
+        function validateRoomSelection() {
+            const roomType = document.getElementById('roomType').value;
+            if (!roomType) {
+                alert('Please select a room type');
+                return;
+            }
+            goToNextStep();
+        }
+
+        function validateAmenities() {
+            goToNextStep();
+        }
+
+        function validateDates() {
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+            
+            if (!checkIn || !checkOut) {
+                alert('Please select both check-in and check-out dates');
+                return;
+            }
+            
+            if (new Date(checkOut) <= new Date(checkIn)) {
+                alert('Check-out date must be after check-in date');
+                return;
+            }
+            
+            updateBookingSummary();
+            goToNextStep();
+        }
+
+        function validateGuests() {
+            const guestName = document.getElementById('guestName1').value;
+            if (!guestName.trim()) {
+                alert('Please enter at least the primary guest name');
+                return;
+            }
+            goToNextStep();
+        }
+
+        function validateContact() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!email || !phone) {
+                alert('Please fill in all contact information');
+                return;
+            }
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            updateBookingSummary();
+            goToNextStep();
+        }
+
+        function goToNextStep() {
+            const currentStep = document.querySelector('.step.active');
+            const nextStep = currentStep.nextElementSibling;
+            
+            if (nextStep && nextStep.classList.contains('step')) {
+                currentStep.classList.remove('active');
+                nextStep.classList.add('active');
+                updateProgress(parseInt(nextStep.getAttribute('data-step')));
+            }
+        }
+
+        function updateProgress(stepNumber) {
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index + 1 <= stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        // Price Calculation
+        function calculateTotalPrice() {
+            let total = 0;
+            
+            // Room price
+            const roomPrice = document.getElementById('roomPriceValue').value;
+            total += parseInt(roomPrice) || 0;
+            
+            // Update room price display
+            document.getElementById('roomPriceDisplay').textContent = `AED ${roomPrice || 0}`;
+            
+            // Amenities prices
+            let amenitiesTotal = 0;
+            const checkedAmenities = document.querySelectorAll('input[name="amenities"]:checked');
+            checkedAmenities.forEach(checkbox => {
+                const price = parseInt(checkbox.getAttribute('data-price')) || 0;
+                amenitiesTotal += price;
+            });
+            
+            document.getElementById('amenitiesPrice').textContent = `AED ${amenitiesTotal}`;
+            total += amenitiesTotal;
+            
+            // Update total display
+            document.getElementById('totalPerNight').textContent = `AED ${total}`;
+            
+            return total;
+        }
+
+        function updateBookingSummary() {
+            // Room
+            document.getElementById('summaryRoom').textContent = document.getElementById('roomType').value;
+            
+            // Dates
+            document.getElementById('summaryCheckIn').textContent = document.getElementById('checkIn').value;
+            document.getElementById('summaryCheckOut').textContent = document.getElementById('checkOut').value;
+            
+            // Guests
+            const guestNames = Array.from(document.querySelectorAll('input[name="guestName[]"]'))
+                .map(input => input.value)
+                .filter(name => name.trim());
+            document.getElementById('summaryGuests').textContent = guestNames.join(', ');
+            
+            // Nights
+            const checkIn = new Date(document.getElementById('checkIn').value);
+            const checkOut = new Date(document.getElementById('checkOut').value);
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            document.getElementById('summaryNights').textContent = nights;
+            
+            // Total
+            const nightlyRate = calculateTotalPrice();
+            const total = nightlyRate * nights;
+            document.getElementById('summaryTotal').textContent = `AED ${total}`;
+        }
+
+        function handleBookingSubmission(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<div class="loading"></div> Processing...';
+            submitButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Collect form data
+                const formData = new FormData(e.target);
+                const bookingData = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    if (bookingData[key]) {
+                        if (Array.isArray(bookingData[key])) {
+                            bookingData[key].push(value);
+                        } else {
+                            bookingData[key] = [bookingData[key], value];
+                        }
+                    } else {
+                        bookingData[key] = value;
+                    }
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('lastBooking', JSON.stringify(bookingData));
+                
+                // Show success message
+                alert(`Thank you, ${bookingData['guestName[]'][0]}! Your booking has been confirmed. We've sent a confirmation email to ${bookingData.email}`);
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Redirect to home page
+                window.location.href = 'index.html';
+                
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

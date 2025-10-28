@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <a href="index.html"><h2>Grand Hotel</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="rooms.html">Rooms</a></li>
+                <li><a href="amenities.html">Amenities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='booking.html'">
+                    <i class="fas fa-calendar-check"></i>Book Now
+                </button>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <!-- Rooms Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover; margin-top: 0;">
+        <div class="hero-content">
+            <h1>Rooms & Suites</h1>
+            <p>Discover our luxurious accommodations designed for your comfort</p>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms-page">
+        <h2>Our Accommodations</h2>
+        <p class="section-subtitle">Each room is thoughtfully designed to provide the perfect blend of luxury and comfort</p>
+
+        <div class="rooms-grid">
+            <!-- Standard Room -->
+            <div class="room-card-detailed">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Standard Room">
+                    <div class="room-badge">Most Popular</div>
+                </div>
+                <div class="room-info-detailed">
+                    <h3>Standard Room</h3>
+                    <p class="room-description">Perfect for solo travelers or couples, our Standard Room offers comfort and elegance with a queen bed, modern amenities, and a luxurious bathroom.</p>
+                    
+                    <div class="room-features-detailed">
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>2 Guests</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>Queen Bed</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>35 m²</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Wi-Fi</span>
+                        </div>
+                    </div>
+
+                    <div class="room-amenities">
+                        <h4>Room Amenities</h4>
+                        <ul>
+                            <li>Smart TV with streaming</li>
+                            <li>Air conditioning</li>
+                            <li>Mini refrigerator</li>
+                            <li>Safety deposit box</li>
+                            <li>Work desk</li>
+                            <li>Premium toiletries</li>
+                        </ul>
+                    </div>
+
+                    <div class="room-price-section">
+                        <div class="price">AED 150 <span>/ night</span></div>
+                        <button class="cta-button" onclick="window.location.href='booking.html'">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deluxe Room -->
+            <div class="room-card-detailed">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deluxe Room">
+                    <div class="room-badge">City View</div>
+                </div>
+                <div class="room-info-detailed">
+                    <h3>Deluxe Room</h3>
+                    <p class="room-description">Experience luxury with our Deluxe Room featuring a king bed, stunning city views, spacious work area, and premium amenities for the discerning traveler.</p>
+                    
+                    <div class="room-features-detailed">
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>2 Guests</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>45 m²</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-city"></i>
+                            <span>City View</span>
+                        </div>
+                    </div>
+
+                    <div class="room-amenities">
+                        <h4>Room Amenities</h4>
+                        <ul>
+                            <li>All Standard Room amenities</li>
+                            <li>City view balcony</li>
+                            <li>Upgraded mini bar</li>
+                            <li>Nespresso coffee machine</li>
+                            <li>Premium bathrobes</li>
+                            <li>Enhanced workspace</li>
+                        </ul>
+                    </div>
+
+                    <div class="room-price-section">
+                        <div class="price">AED 250 <span>/ night</span></div>
+                        <button class="cta-button" onclick="window.location.href='booking.html'">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite -->
+            <div class="room-card-detailed">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Suite">
+                    <div class="room-badge">Luxury</div>
+                </div>
+                <div class="room-info-detailed">
+                    <h3>Luxury Suite</h3>
+                    <p class="room-description">Indulge in ultimate luxury with our spacious suite featuring separate living and sleeping areas, private balcony, and exclusive amenities.</p>
+                    
+                    <div class="room-features-detailed">
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>4 Guests</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed + Sofa</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>75 m²</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Private Balcony</span>
+                        </div>
+                    </div>
+
+                    <div class="room-amenities">
+                        <h4>Suite Amenities</h4>
+                        <ul>
+                            <li>All Deluxe Room amenities</li>
+                            <li>Separate living room</li>
+                            <li>Private balcony with seating</li>
+                            <li>Jacuzzi bathtub</li>
+                            <li>Premium sound system</li>
+                            <li>Butler service available</li>
+                        </ul>
+                    </div>
+
+                    <div class="room-price-section">
+                        <div class="price">AED 400 <span>/ night</span></div>
+                        <button class="cta-button" onclick="window.location.href='booking.html'">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Room -->
+            <div class="room-card-detailed">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Family Room">
+                    <div class="room-badge">Family Friendly</div>
+                </div>
+                <div class="room-info-detailed">
+                    <h3>Family Room</h3>
+                    <p class="room-description">Perfect for families, this spacious room features two queen beds, a kitchenette, and dedicated play area for children.</p>
+                    
+                    <div class="room-features-detailed">
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>4 Guests</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>Two Queen Beds</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>55 m²</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <span>Kitchenette</span>
+                        </div>
+                    </div>
+
+                    <div class="room-amenities">
+                        <h4>Family Amenities</h4>
+                        <ul>
+                            <li>All Standard Room amenities</li>
+                            <li>Kitchenette with microwave</li>
+                            <li>Dedicated children's area</li>
+                            <li>Family-sized bathroom</li>
+                            <li>Baby cot available</li>
+                            <li>Child safety features</li>
+                        </ul>
+                    </div>
+
+                    <div class="room-price-section">
+                        <div class="price">AED 300 <span>/ night</span></div>
+                        <button class="cta-button" onclick="window.location.href='booking.html'">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Comparison -->
+    <section class="comparison-section">
+        <h2>Room Comparison</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>Standard</th>
+                        <th>Deluxe</th>
+                        <th>Suite</th>
+                        <th>Family</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Room Size</td>
+                        <td>35 m²</td>
+                        <td>45 m²</td>
+                        <td>75 m²</td>
+                        <td>55 m²</td>
+                    </tr>
+                    <tr>
+                        <td>Max Guests</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Bed Type</td>
+                        <td>Queen</td>
+                        <td>King</td>
+                        <td>King + Sofa</td>
+                        <td>Two Queens</td>
+                    </tr>
+                    <tr>
+                        <td>View</td>
+                        <td>City/Garden</td>
+                        <td>City</td>
+                        <td>Panoramic</td>
+                        <td>City/Garden</td>
+                    </tr>
+                    <tr>
+                        <td>Balcony</td>
+                        <td>-</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Living Area</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>✓</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Kitchenette</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Price/Night</td>
+                        <td>AED 150</td>
+                        <td>AED 250</td>
+                        <td>AED 400</td>
+                        <td>AED 300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Experience Luxury?</h2>
+            <p>Book your stay today and enjoy our world-class accommodations and amenities</p>
+            <button class="cta-button" onclick="window.location.href='booking.html'">Book Your Room Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury and comfort in the heart of the city. Your perfect getaway awaits.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="rooms.html">Rooms & Suites</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 27 Education Road, Al Qarayen District</p>
+                <p><i class="fas fa-phone"></i> +971 56 817 9793</p>
+                <p><i class="fas fa-envelope"></i> info@grandhotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .rooms-page {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .rooms-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .room-card-detailed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .room-card-detailed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .room-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .room-info-detailed {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .room-info-detailed h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .room-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .room-features-detailed {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+
+        .feature i {
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        .room-amenities {
+            margin-bottom: 2rem;
+        }
+
+        .room-amenities h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .room-amenities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .room-amenities li {
+            padding: 0.3rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .room-amenities li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .room-price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .comparison-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .comparison-table {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .room-card-detailed {
+                grid-template-columns: 1fr;
+            }
+
+            .room-image {
+                height: 250px;
+            }
+
+            .room-features-detailed {
+                grid-template-columns: 1fr;
+            }
+
+            .room-price-section {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</body>
+</html>

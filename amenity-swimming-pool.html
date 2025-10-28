@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Pool - Grand Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <a href="index.html"><h2>Grand Hotel</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li class="active"><a href="amenities.html">Amenities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="window.location.href='booking.html'">
+                    <i class="fas fa-calendar-check"></i>Book Now
+                </button>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <section class="amenity-page">
+        <h1>Infinity Swimming Pool</h1>
+        <div class="amenity-content">
+            <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Swimming Pool">
+            <div class="amenity-text">
+                <p>Experience luxury relaxation at our stunning rooftop infinity pool. Enjoy panoramic city views while swimming in our temperature-controlled pool or relaxing on our sun deck.</p>
+                
+                <div class="amenity-details">
+                    <h3>Pool Features</h3>
+                    <ul>
+                        <li>Infinity edge with city views</li>
+                        <li>Temperature-controlled water</li>
+                        <li>Poolside bar service</li>
+                        <li>Luxury sun loungers</li>
+                        <li>Towels and robe service</li>
+                        <li>Shower and changing facilities</li>
+                    </ul>
+                </div>
+
+                <div class="opening-hours">
+                    <h3>Opening Hours</h3>
+                    <p><strong>Daily:</strong> 6:00 AM - 10:00 PM</p>
+                    <p><strong>Pool Bar:</strong> 10:00 AM - 8:00 PM</p>
+                </div>
+
+                <div class="safety-info">
+                    <h3>Safety Information</h3>
+                    <p>Children must be accompanied by adults. Lifeguard on duty during peak hours. Please follow posted safety guidelines.</p>
+                </div>
+
+                <a href="amenities.html" class="cta-button">Back to Amenities</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury and comfort in the heart of the city. Your perfect getaway awaits.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="rooms.html">Rooms & Suites</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 27 Education Road, Al Qarayen District</p>
+                <p><i class="fas fa-phone"></i> +971 56 817 9793</p>
+                <p><i class="fas fa-envelope"></i> info@grandhotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .amenity-page {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .amenity-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .amenity-content img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .amenity-details, .opening-hours, .safety-info {
+            margin: 2rem 0;
+        }
+
+        .amenity-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .amenity-details li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .amenity-details li:before {
+            content: "✓";
+            color: var(--success);
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .safety-info {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .amenity-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
